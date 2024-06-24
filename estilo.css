@@ -1,0 +1,32 @@
+body {
+	background: #A7F23B;
+	font: 16px Arial, serif;
+}
+
+#cabecalho {
+	width: 800px;
+	height: 400px;
+
+}
+#menu {
+
+	background: #0E8A2A ;
+	
+	padding: 18px;
+}
+
+a {
+	color: #EBF517;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 8px;
+}
+
+#conteudo {
+	background: #5DC546 ;
+	padding: 1.5em;
+	color: #EBF517;
+}
+.centralize {
+	text-align: center;
+}
