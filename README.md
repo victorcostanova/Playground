@@ -1,3 +1,3 @@
-# Meu projeto
+# AKALI, A ASSASSINA RENEGADA
 
-Repositório Projeto Teste - AKALI, A ASSASSINA RENEGADA - League of Legends
+Repositório Projeto Teste - Akali, League of Legends
