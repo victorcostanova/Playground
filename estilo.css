@@ -1,6 +1,11 @@
 body {
 	background: #A7F23B;
 	font: 16px Arial, serif;
+	height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
 }
 
 #cabecalho {
@@ -26,7 +31,10 @@ a {
 	background: #5DC546 ;
 	padding: 1.5em;
 	color: #EBF517;
+	margin-top: 30px;
+    max-width: 800px;
 }
 .centralize {
 	text-align: center;
+	
 }
