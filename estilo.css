@@ -2,10 +2,10 @@ body {
 	background: #A7F23B;
 	font: 16px Arial, serif;
 	height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    	margin: 0;
+    	display: flex;
+    	justify-content: center; 
+    	align-items: center; 
 }
 
 #cabecalho {
