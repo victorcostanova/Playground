@@ -4,7 +4,7 @@ Repositório Projeto Teste - Akali, League of Legends
 
 
    
-- [X] Página Inicial
+- [X] Lore
 - [X] Skills
 - [X] Skins
 
