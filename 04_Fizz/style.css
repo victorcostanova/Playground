@@ -23,6 +23,7 @@ header{
 }
 header h1{
     font-family: var(--fonte-titulo);
+    font-variant: small-caps;
     padding-top: 70px;
     text-align: center;
     font-size: 80px;
