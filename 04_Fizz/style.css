@@ -15,7 +15,6 @@
 }
 header{
     
-    min-height: 24vh;
     background-color: #05CEDB;
     color: #243233;
     
@@ -24,7 +23,7 @@ header{
 header h1{
     font-family: var(--fonte-titulo);
     font-variant: small-caps;
-    padding-top: 70px;
+    padding-top: 50px;
     text-align: center;
     font-size: 80px;
     
@@ -32,6 +31,7 @@ header h1{
 header p{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    padding-bottom: 50px;
 }
 header a{
     text-decoration: none;
