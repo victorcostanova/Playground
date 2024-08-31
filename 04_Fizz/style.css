@@ -112,8 +112,6 @@ aside{
 
 
 .parallax{
-    background-color: rgb(12, 12, 12);
-    color: white;
     box-shadow: inset 6px 6px 13px 0px rgba(0, 0, 0, 0.555);
     background-size: cover;
     background-attachment: fixed;
@@ -125,6 +123,7 @@ aside{
 }
 
 section.parallax > p{
+    color: white;
     text-align: center;
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.521);
