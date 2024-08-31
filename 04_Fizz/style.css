@@ -83,23 +83,29 @@ aside{
 
 #img1{
     background-image: url(imagens/fundomar.jpeg);
+    background-position: center center;
 }
 #img2{
     background-image: url(imagens/Fizz-lor.jpeg);
+    background-position: center center;
 }
 #img3{
     background-image: url(imagens/barco.jpg);
+    
 }
 #img4{
     background-image: url(imagens/fizz_mesa.jpg);
+    background-position: center center;
 }
 
 #img5{
     background-image: url(imagens/fizz_navio.jpg);
+    background-position: center center;
 }
 
 #img6{
     background-image: url(imagens/fizz_1.jpg);
+    background-position: center center;
     
 }
 
