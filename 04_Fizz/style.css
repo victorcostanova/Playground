@@ -64,6 +64,7 @@ section{
     background-image: url(imagens/history.jpg);
     display: block;
     unicode-bidi: isolate;
+    background-size: cover;
     
 }
 section p{
