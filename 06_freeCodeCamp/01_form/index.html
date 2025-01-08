@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <head>
+      <h1>Survey Form</h1>
+      <p>Help improve the plataform and provide any feedback!</p>
+    </head>
+    <form id="survey-form">
+      <div>
+        <label id="label-name" for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+      <div>
+        <label id="label-email" for="email">E-mail</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+      <div>
+        <label id="label-age" for="age">Age</label>
+        <input
+          type="number"
+          name="age"
+          id="age"
+          min="10"
+          max="100"
+          placeholder="Age"
+        />
+      </div>
+      <div>
+        <p>Which option describes your bitcoin knowledge?</p>
+        <select name="role" id="dropdown" required>
+          <option disabled selected value>Select level</option>
+          <option value="none">Fiduciário</option>
+          <option value="basic">Basic</option>
+          <option value="medium">Medium</option>
+          <option value="bitconheiro">Bitconheiro</option>
+        </select>
+      </div>
+      <div>
+        <p>What is your favorite feature of the course?</p>
+        <select name="role" id="dropdown" required>
+          <option disabled selected value>Select an option</option>
+          <option value="lessons">Content</option>
+          <option value="interaction">Interaction</option>
+          <option value="interface">Interface</option>
+      </div>
+      <div>
+        <p>Would you recommend this course to a friend?</p>
+        <label>
+          <input type="radio" name="user-recomm" id="">
+        </label>
+
+      </div>
+    </form>
+  </body>
+</html>
