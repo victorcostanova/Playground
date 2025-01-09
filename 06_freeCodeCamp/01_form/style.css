@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+}
+
+body {
+  background-color: #1c1d2e;
+  color: #fff535;
+}
+
+header {
+  text-align: center;
+  margin: 2rem 0px;
+}
+
+.container {
+  width: 100%;
+  margin: 3rem auto 0 auto;
+}
+
+form {
+  display: block;
+  unicode-bidi: isolate;
+  max-width: 60%;
+  min-width: 400px;
+  margin: auto;
+}
+
+.container-label {
+  margin: 2rem;
+}
+.container-label input {
+  width: 100%;
+  background-color: #2e3045;
+  border: 1px solid #2e3045;
+  color: white;
+}

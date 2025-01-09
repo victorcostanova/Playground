@@ -7,88 +7,99 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <head>
+    <header>
       <h1>Survey Form</h1>
       <p>Help improve the plataform and provide any feedback!</p>
-    </head>
-    <form id="survey-form">
-      <div>
-        <label id="label-name" for="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Enter your name"
-          required
-        />
-      </div>
-      <div>
-        <label id="label-email" for="email">E-mail</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter your email"
-          required
-        />
-      </div>
-      <div>
-        <label id="label-age" for="age">Age</label>
-        <input
-          type="number"
-          name="age"
-          id="age"
-          min="10"
-          max="100"
-          placeholder="Age"
-        />
-      </div>
-      <div>
-        <p>Which option describes your bitcoin knowledge?</p>
-        <select name="role" id="dropdown" required>
-          <option disabled selected value>Select level</option>
-          <option value="none">Fiduciário</option>
-          <option value="basic">Basic</option>
-          <option value="medium">Medium</option>
-          <option value="bitconheiro">Bitconheiro</option>
-        </select>
-      </div>
-      <div>
-        <p>What is your favorite feature of the course?</p>
-        <select name="role" id="dropdown" required>
-          <option disabled selected value>Select an option</option>
-          <option value="lessons">Content</option>
-          <option value="interaction">Interaction</option>
-          <option value="interface">Interface</option>
-        </select>
-      </div>
-      <div>
-        <p>Would you recommend this course to a friend?</p>
-        <label>
+    </header>
+    <div class="container">
+      <form id="survey-form">
+        <div class="container-label">
+          <label id="label-name" for="name">Name</label>
           <input
-            type="radio"
-            name="user-recommend"
-            value="definitely"
-            checked
-          />"Definitely"
-        </label>
-        <label>
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+        <div class="container-label">
+          <label id="label-email" for="email">E-mail</label>
           <input
-            type="radio"
-            name="user-recommend"
-            value="maybe"
-            checked
-          />"Maybe"
-        </label>
-        <label>
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div class="container-label">
+          <label id="label-age" for="age">Age</label>
           <input
-            type="radio"
-            name="user-recommend"
-            value="not-sure"
-            checked
-          />"Not sure"
-        </label>
-      </div>
-    </form>
+            type="number"
+            name="age"
+            id="age"
+            min="10"
+            max="100"
+            placeholder="Age"
+          />
+        </div>
+        <div class="container-label">
+          <p>Which option describes your bitcoin knowledge?</p>
+          <select name="role" id="dropdown" required>
+            <option disabled selected value>Select level</option>
+            <option value="none">Fiduciário</option>
+            <option value="basic">Basic</option>
+            <option value="medium">Medium</option>
+            <option value="bitconheiro">Bitconheiro</option>
+          </select>
+        </div>
+        <div class="container-label">
+          <p>What is your favorite feature of the course?</p>
+          <select name="role" id="dropdown" required>
+            <option disabled selected value>Select an option</option>
+            <option value="lessons">Content</option>
+            <option value="interaction">Interaction</option>
+            <option value="interface">Interface</option>
+          </select>
+        </div>
+        <div class="container-label">
+          <p>Would you recommend this course to a friend?</p>
+          <label>
+            <input
+              type="radio"
+              name="user-recommend"
+              value="definitely"
+              checked
+            />"Definitely"
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="user-recommend"
+              value="maybe"
+              checked
+            />"Maybe"
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="user-recommend"
+              value="not-sure"
+              checked
+            />"Not sure"
+          </label>
+        </div>
+        <div class="container-label">
+          <p>Any comments or sugestions?</p>
+          <textarea
+            name="comment"
+            id="comments"
+            placeholder="Enter your comment here..."
+          ></textarea>
+        </div>
+        <button type="submit" id="submit" class="submit-button">Submit</button>
+      </form>
+    </div>
   </body>
 </html>
