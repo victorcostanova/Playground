@@ -26,14 +26,15 @@ form {
   max-width: 60%;
   min-width: 400px;
   margin: auto;
-  background-color: #21212c3c;
+  background-color: #4834723c;
   padding: 1rem 2rem;
   border-radius: 8px;
 }
 
 .container-label {
-  margin: 2rem;
+  margin: 2rem 0;
 }
+
 ::placeholder {
   color: aliceblue;
 }
@@ -55,6 +56,32 @@ select {
   color: aliceblue;
 }
 
+label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
 .inline {
   width: unset;
+  margin: 0 0.5em 0 0;
+  vertical-align: middle;
+}
+textarea {
+  margin-top: 1rem;
+  height: 4rem;
+  background-color: #453f5f;
+  border-color: #2e3045;
+  width: 100%;
+}
+button[type="submit"] {
+  display: block;
+  width: 60%;
+  margin: 1em auto;
+  height: 2em;
+  font-size: 1.1rem;
+  background-color: #fff535;
+  box-shadow: 0px 0px 8px 0px yellow;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
