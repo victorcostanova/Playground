@@ -1,10 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+
 * {
   margin: 0;
 }
 
 body {
-  background-color: #1c1d2e;
+  background-color: #212238;
   color: #fff535;
+  font-family: "Noto Sans", sans-serif;
 }
 
 header {
@@ -23,14 +26,35 @@ form {
   max-width: 60%;
   min-width: 400px;
   margin: auto;
+  background-color: #21212c3c;
+  padding: 1rem 2rem;
+  border-radius: 8px;
 }
 
 .container-label {
   margin: 2rem;
 }
+::placeholder {
+  color: aliceblue;
+}
 .container-label input {
   width: 100%;
-  background-color: #2e3045;
+  background-color: #453f5f;
   border: 1px solid #2e3045;
   color: white;
+  padding: 6px;
+  margin-top: 1em;
+}
+
+select {
+  width: 100%;
+  padding: 6px;
+  margin-top: 1em;
+  background-color: #453f5f;
+  border: 1px solid #2e3045;
+  color: aliceblue;
+}
+
+.inline {
+  width: unset;
 }
