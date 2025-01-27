@@ -4,14 +4,14 @@
   --text-color: #111528;
   --secondary-text: #232738;
   --primary-color: #3a435d;
-  --accent-color: #0071ff;
+  --accent-color: #2c245a;
 }
 .darkmode {
-  --base-color: #070b1d;
-  --base-variant: #101425;
+  --base-color: #171839;
+  --base-variant: #292b6f;
   --text-color: #ffffff;
   --secondary-text: #a4a5b8;
-  --primary-color: #3a435d;
+  --primary-color: #49516c;
   --accent-color: #0071ff;
 }
 * {
