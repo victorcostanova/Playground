@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script href="script.js"></script>
-    <title>RentEase</title>
+    <script type="text/javascript" src="script.js" defer></script>
+    <title>RentEase-SignUp</title>
   </head>
   <body>
     <div class="wrapper">
       <h1>Signup</h1>
-      <form>
+      <p id="error-message"></p>
+      <form id="form">
         <div>
           <label for="firstname-input">
             <svg
@@ -26,13 +27,13 @@
             </svg>
           </label>
           <input
-            required
             type="text"
             name="firstname"
             id="firstname-input"
             placeholder="Firstname"
           />
         </div>
+
         <div>
           <label for="lastname-input">
             <svg
@@ -48,7 +49,6 @@
             </svg>
           </label>
           <input
-            required
             type="text"
             name="lastname"
             id="lastname-input"
