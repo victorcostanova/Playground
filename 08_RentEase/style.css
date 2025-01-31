@@ -177,13 +177,13 @@ nav {
 @media (max-width: 480px) {
   .left-nav,
   .right-nav {
-    flex-direction: column; /* Alinha os itens verticalmente */
-    align-items: flex-start; /* Alinha os itens à esquerda */
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .left-nav a,
   .right-nav a {
-    padding: 0.5rem 0; /* Reduz o padding para melhor espaçamento */
+    padding: 0.5rem 0;
   }
 
   .right-nav button {
