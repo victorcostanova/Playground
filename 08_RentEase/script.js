@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const error_message = document.getElementById("error-message");
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault(); // Impede o envio do formulário
+    e.preventDefault();
 
     let errors = [];
 
@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (errors.length > 0) {
       error_message.innerText = errors.join(". ");
     } else {
-      error_message.innerText = ""; // Limpa a mensagem de erro se não houver erros
-      form.submit(); // Envia o formulário se não houver erros
+      error_message.innerText = "";
+      form.submit();
     }
   });
 
@@ -113,7 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function isValidEmail(email) {
-    // Regex simples para validar e-mail
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
