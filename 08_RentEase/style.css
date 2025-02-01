@@ -154,7 +154,7 @@ nav {
   max-width: 1200px;
   flex-wrap: wrap;
   margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .left-nav a,
@@ -175,24 +175,29 @@ nav {
   font-size: 0.9rem;
   margin-left: 1rem;
 }
-@media (max-width: 480px) {
-  .left-nav,
-  .right-nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .left-nav a,
-  .right-nav a {
-    padding: 0.5rem 0;
-  }
-
-  .right-nav button {
-    width: 100%;
-    margin-top: 0.5rem;
-  }
+.center-nav {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem; /* Add padding for better spacing */
+  border-radius: 5px; /* Optional: Add rounded corners */
 }
 
+.main-home {
+  margin: auto;
+  margin-top: 2rem;
+  width: 80%;
+  font-size: 0.8rem;
+  background-color: rgba(194, 190, 190, 0.618);
+}
+.main-home p {
+  margin: 0.5rem;
+  max-width: 600px; /* Limit line length for readability */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
 @media (max-width: 1100px) {
   .wrapper {
     width: min(600px, 100%);
@@ -200,12 +205,15 @@ nav {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 670px) {
   nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .left-nav {
+    margin-top: 0.5rem;
   }
   .left-nav a {
     display: block;
@@ -219,8 +227,13 @@ nav {
   }
   .right-nav a,
   .right-nav button {
-    padding: 0;
     margin: 0;
     margin-top: 10px;
+  }
+  .righ-nav button {
+    padding: 10px 20px;
+  }
+  .center-nav h1 {
+    font-size: 1.5rem;
   }
 }
