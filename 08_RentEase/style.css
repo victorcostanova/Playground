@@ -16,7 +16,7 @@ html {
   color: var(--text-color);
   text-align: center;
 }
-
+/* SignUp/Login */
 body {
   min-height: 100vh;
   background-image: url(signup.jpg);
@@ -133,7 +133,7 @@ form div.incorrect input {
 #error-message {
   color: #f06272;
 }
-
+/*HOME PAGE*/
 .header-home {
   display: flex;
   justify-content: center;
@@ -151,9 +151,10 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 2rem;
   max-width: 1200px;
   flex-wrap: wrap;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .left-nav a,
@@ -196,5 +197,30 @@ nav {
   .wrapper {
     width: min(600px, 100%);
     border-radius: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .left-nav a {
+    display: block;
+    padding: 0;
+    margin-top: 10px;
+  }
+  .right-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .right-nav a,
+  .right-nav button {
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
   }
 }
