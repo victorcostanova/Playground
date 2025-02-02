@@ -148,6 +148,11 @@ form div.incorrect input {
   color: var(--base-color);
   text-decoration: none;
 }
+
+.header-home h2 {
+  font-size: 1rem;
+  width: 100%;
+}
 nav {
   display: flex;
   justify-content: space-between;
@@ -167,7 +172,7 @@ nav {
   white-space: nowrap;
 }
 
-.right-nav button {
+.left-nav button {
   padding: 0.5rem 1rem;
   border: none;
   background-color: var(--text-color);
@@ -176,15 +181,6 @@ nav {
   border-radius: 5px;
   font-size: 0.9rem;
   margin-left: 1rem;
-}
-.center-nav {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0;
-  margin-top: 1.5rem; /* Add padding for better spacing */
-  border-radius: 5px; /* Optional: Add rounded corners */
 }
 
 .main-home {
@@ -202,7 +198,7 @@ nav {
   padding: 0 1rem;
 }
 
-.center-nav .logo {
+.right-nav .logo {
   max-width: 120px;
   margin-bottom: 1rem;
   border-radius: 10px;
@@ -220,7 +216,7 @@ nav {
   }
 }
 
-@media (max-width: 670px) {
+@media (max-width: 770px) {
   nav {
     display: flex;
     flex-direction: column;
@@ -228,7 +224,7 @@ nav {
     margin-bottom: 0.5rem;
   }
   .left-nav {
-    margin-top: 1.5rem;
+    margin-top: 0;
   }
   .left-nav a {
     display: block;
@@ -239,13 +235,14 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 1.5rem;
   }
-  .right-nav a,
-  .right-nav button {
+
+  .left-nav button {
     margin: 0;
     margin-top: 10px;
   }
-  .righ-nav button {
+  .left-nav button {
     padding: 10px 20px;
   }
   .center-nav {

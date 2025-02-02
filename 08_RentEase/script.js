@@ -9,6 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   const error_message = document.getElementById("error-message");
   const logoutBtn = document.getElementById("logout-btn");
+  const welcome = document.getElementById("welcome");
+  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+
+  if (loggedUser) {
+    welcome.innerText = `Hello, ${loggedUser.firstname} ${loggedUser.lastname}!`;
+  }
 
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
@@ -55,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         users.push(newUser);
         localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("loggedUser", JSON.stringify(newUser));
       } else {
         // Login do usuário
         const users = JSON.parse(localStorage.getItem("users")) || [];
