@@ -11,10 +11,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.getElementById("logout-btn");
   const welcome = document.getElementById("welcome");
   const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+  const currentPage = window.location.pathname;
 
+  if (loggedUser) {
+    // if user is logged, and the page is login or signup, redirect to home
+    if (
+      currentPage.includes("login.html") ||
+      currentPage.includes("index.html")
+    ) {
+      window.location.href = "home.html";
+    }
+  } else {
+    // if user is not logged, and the page is not login or signup, redirect to login
+    if (
+      !(
+        currentPage.includes("login.html") || currentPage.includes("index.html")
+      )
+    ) {
+      window.location.href = "login.html";
+    }
+  }
+
+  //If user is logged, Hellor, user
   if (loggedUser) {
     welcome.innerText = `Hello, ${loggedUser.firstname} ${loggedUser.lastname}!`;
   }
+  //if user logged out, redirect to login page
 
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
@@ -47,12 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (firstname_input) {
         const users = JSON.parse(localStorage.getItem("users")) || [];
 
-        // Verifica se o email já existe
-        if (users.some((user) => user.email === email_input.value)) {
-          error_message.innerText = "Este email já está cadastrado.";
-          return;
-        }
-
         const newUser = {
           firstname: firstname_input.value,
           lastname: lastname_input.value,
@@ -63,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("users", JSON.stringify(users));
         localStorage.setItem("loggedUser", JSON.stringify(newUser));
       } else {
-        // Login do usuário
+        // Login
         const users = JSON.parse(localStorage.getItem("users")) || [];
 
         const storedUser = users.find(
@@ -93,6 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (users.some((user) => user.email === email_input.value)) {
       errors.push("Email is already registered");
+      email_input.parentElement.classList.add("incorrect");
+      return errors;
     }
 
     if (firstname === "") {
