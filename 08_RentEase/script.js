@@ -8,6 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
     "confirm-password-input"
   );
   const error_message = document.getElementById("error-message");
+  const logoutBtn = document.getElementById("logout-btn");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("loggedUser");
+      window.location.href = "login.html";
+    });
+  }
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -30,7 +38,39 @@ document.addEventListener("DOMContentLoaded", () => {
       error_message.innerText = errors.join(". ");
     } else {
       error_message.innerText = "";
-      form.submit();
+      if (firstname_input) {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Verifica se o email já existe
+        if (users.some((user) => user.email === email_input.value)) {
+          error_message.innerText = "Este email já está cadastrado.";
+          return;
+        }
+
+        const newUser = {
+          firstname: firstname_input.value,
+          lastname: lastname_input.value,
+          email: email_input.value,
+          password: password_input.value,
+        };
+        users.push(newUser);
+        localStorage.setItem("users", JSON.stringify(users));
+      } else {
+        // Login do usuário
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        const storedUser = users.find(
+          (user) =>
+            user.email === email_input.value &&
+            user.password === password_input.value
+        );
+        if (!storedUser) {
+          error_message.innerText = "Email or password do not match";
+          return;
+        }
+        localStorage.setItem("loggedUser", JSON.stringify(storedUser));
+      }
+      window.location.href = "home.html";
     }
   });
 
@@ -42,6 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
     confirm_password
   ) {
     let errors = [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    if (users.some((user) => user.email === email_input.value)) {
+      errors.push("Email is already registered");
+    }
 
     if (firstname === "") {
       errors.push("First Name is required");
