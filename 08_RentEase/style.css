@@ -241,6 +241,41 @@ nav {
   width: 150px;
 }
 
+/*ALL FLATS*/
+.flats-container {
+  margin: auto;
+  width: 80%;
+  border-radius: 10px;
+}
+.flats-table {
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+.flats-table th,
+.flats-table td {
+  padding: 5px;
+  text-align: center;
+  border-bottom: 3px solid var(--text-color);
+  border-collapse: collapse;
+}
+
+.flats-table th {
+  font-weight: bold;
+}
+
+.btn-table {
+  border: none;
+  background-color: var(--text-color);
+  color: var(--base-color);
+  padding: 4px;
+  display: block;
+  width: 60px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
 /*RESPONSIVE*/
 @media (max-width: 1100px) {
   .wrapper {

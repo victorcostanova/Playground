@@ -88,27 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
       flats.push(newFlat);
       localStorage.setItem("flats", JSON.stringify(flats));
 
-      // Limpar formulário
       addform.reset();
-
-      //const flat = JSON.parse(localStorage.getItem("flat")) || [];
-      /*
-        const newUser = {
-          firstname: firstname_input.value,
-          lastname: lastname_input.value,
-          email: email_input.value,
-          password: password_input.value,
-        };
-        users.push(newUser);
-        localStorage.setItem("users", JSON.stringify(users));
-        localStorage.setItem("loggedUser", JSON.stringify(newUser));
-        */
     }
   });
 
   function getAddFormErrors(city, street, stnum, area, ac, year, price, date) {
     let errors = [];
-    //const flats = JSON.parse(localStorage.getItem("flats")) || [];
 
     if (city === "") {
       errors.push("City is required");

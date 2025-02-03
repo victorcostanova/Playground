@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="login.js" defer></script>
+    <script type="text/javascript" src="allflats.js" defer></script>
     <title>RentEase-Home</title>
   </head>
   <body>
     <header class="header-home">
       <nav>
         <div class="left-nav">
-          <a href="allflat.html">All Flats</a>
+          <a href="homeflat.html">Favorite Flats</a>
           <a href="addflat.html">Add Flat</a>
           <a href="update.html">Update Profile</a>
           <button id="logout-btn" onclick="">Logout</button>
@@ -28,7 +28,26 @@
 
       <p>Compare & Decide – Quickly review and compare your top choices.</p>
 
-      <table></table>
+      <div class="flats-container">
+        <table class="flats-table" id="flats-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>City</th>
+              <th>Street</th>
+              <th>Area</th>
+              <th>Air Conditioner</th>
+              <th>Year</th>
+              <th>Price</th>
+              <th>Listing Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="flats-table-body">
+            <!-- Flats will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
     </main>
   </body>
 </html>
