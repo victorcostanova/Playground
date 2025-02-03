@@ -134,8 +134,14 @@ form div.incorrect label {
 form div.incorrect input {
   border-color: #f06272;
 }
+form.addflats div.incorrect select {
+  border-color: #f06272;
+}
 
 #error-message {
+  color: #f06272;
+}
+#flat-error-message {
   color: #f06272;
 }
 /*HOME PAGE*/
