@@ -12,7 +12,7 @@
       <nav>
         <div class="left-nav">
           <a href="allflat.html">All Flats</a>
-          <a href="addflat.html">Add Flat</a>
+          <a href="addflat.html">Add Flats</a>
           <a href="update.html">Update Profile</a>
           <button id="logout-btn" onclick="">Logout</button>
         </div>
@@ -25,8 +25,80 @@
     </header>
     <main class="main-home">
       <h2>Add Flats</h2>
-      <p></p>
-      <table></table>
+      <form id="addflat" class="addflats">
+        <div>
+          <label for="city-input">City</label>
+          <input
+            type="text"
+            name="city"
+            id="city-input"
+            placeholder="Digit the city"
+          />
+        </div>
+        <div>
+          <label for="street-input">Street Name</label>
+          <input
+            type="text"
+            name="street"
+            id="street-input"
+            placeholder="Digit the street name"
+          />
+        </div>
+        <div>
+          <label for="stnum-input">Street Number</label>
+          <input
+            type="number"
+            name="street"
+            id="stnum-input"
+            placeholder="Digit the street number"
+          />
+        </div>
+        <div>
+          <label for="area-input">Area Size</label>
+          <input
+            type="number"
+            name="area"
+            id="area-input"
+            placeholder="Digit the area size"
+          />
+        </div>
+        <div>
+          <label for="ac-input">Has AC</label>
+          <select name="ac" id="ac-input">
+            <option value="">Select</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <div>
+          <label for="year-input">Year Built</label>
+          <input
+            type="number"
+            name="year"
+            id="year-input"
+            placeholder="Digit the year built"
+          />
+        </div>
+        <div>
+          <label for="price-input">Rent Price</label>
+          <input
+            type="number"
+            name="price"
+            id="price-input"
+            placeholder="Digit the rent price"
+          />
+        </div>
+        <div>
+          <label for="date-input">Date Availabiity</label>
+          <input
+            type="date"
+            name="date"
+            id="date-input"
+            placeholder="Digit the date availability"
+          />
+        </div>
+        <button type="submit">Add new flat</button>
+      </form>
     </main>
   </body>
 </html>
