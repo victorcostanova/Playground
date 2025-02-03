@@ -141,8 +141,12 @@ form.addflats div.incorrect select {
 #error-message {
   color: #f06272;
 }
-#flat-error-message {
+.error-message {
   color: #f06272;
+}
+.success-message {
+  font: inherit;
+  font-size: 1.2rem;
 }
 /*HOME PAGE*/
 .header-home {

@@ -64,9 +64,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (errors.length > 0) {
       flat_error_message.innerText = errors.join(". ");
-      console.log("Erros encontrados:", errors);
+      flat_error_message.classList.remove("success-message");
+      flat_error_message.classList.add("error-message");
     } else {
-      flat_error_message.innerText = "";
+      flat_error_message.innerText = "Added successfully!";
+      flat_error_message.classList.remove("error-message");
+      flat_error_message.classList.add("success-message");
+
+      const newFlat = {
+        id: Date.now(),
+        userEmail: loggedUser.email,
+        city: city_input.value,
+        street: street_input.value,
+        stnum: stnum_input.value,
+        area: area_input.value,
+        ac: ac_input.value,
+        year: year_input.value,
+        price: price_input.value,
+        date: date_input.value,
+      };
+
+      const flats = JSON.parse(localStorage.getItem("flats")) || [];
+      flats.push(newFlat);
+      localStorage.setItem("flats", JSON.stringify(flats));
+
+      // Limpar formulário
+      addform.reset();
 
       //const flat = JSON.parse(localStorage.getItem("flat")) || [];
       /*
@@ -139,6 +162,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (input.parentElement.classList.contains("incorrect")) {
           input.parentElement.classList.remove("incorrect");
           flat_error_message.innerText = "";
+        } else {
+          flat_error_message.innerText = "";
+          flat_error_message.classList.remove(
+            "success-message",
+            "error-message"
+          );
         }
       });
     }
