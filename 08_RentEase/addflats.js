@@ -107,20 +107,20 @@ document.addEventListener("DOMContentLoaded", () => {
       errors.push("Street number is required");
       stnum_input.parentElement.classList.add("incorrect");
     }
-    if (area === "") {
-      errors.push("Area is required");
+    if (area === "" || area < 10) {
+      errors.push("Valid area is required");
       area_input.parentElement.classList.add("incorrect");
     }
     if (ac === "") {
       errors.push("Air Conditioner is required");
       ac_input.parentElement.classList.add("incorrect");
     }
-    if (year === "") {
-      errors.push("Year is required");
+    if (year === "" || year < 1900 || year > 2025) {
+      errors.push("Valid year is required");
       year_input.parentElement.classList.add("incorrect");
     }
-    if (price === "") {
-      errors.push("Price is required");
+    if (price === "" || price < 100) {
+      errors.push("Valid price is required (minimum 100)");
       price_input.parentElement.classList.add("incorrect");
     }
     if (date === "") {

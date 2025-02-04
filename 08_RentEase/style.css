@@ -138,15 +138,13 @@ form.addflats div.incorrect select {
   border-color: #f06272;
 }
 
-#error-message {
-  color: #f06272;
-}
 .error-message {
   color: #f06272;
 }
 .success-message {
   font: inherit;
   font-size: 1.2rem;
+  color: green;
 }
 /*HOME PAGE*/
 .header-home {
@@ -163,6 +161,9 @@ form.addflats div.incorrect select {
   text-decoration: none;
 }
 
+.updateform {
+  margin: auto;
+}
 .right-nav h2 {
   font-size: 1rem;
   width: 100%;
