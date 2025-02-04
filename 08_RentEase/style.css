@@ -65,7 +65,7 @@ form label,
   height: 50px;
   width: 50px;
   background-color: var(--accent-color);
-  fill: var(--base-color);
+  fill: var(--input-color);
   color: var(--base-color);
   border-radius: 10px 0 0 10px;
   display: flex;
@@ -244,14 +244,16 @@ nav {
 /*ALL FLATS*/
 .flats-container {
   margin: auto;
-  width: 80%;
+  width: 100%;
+
   border-radius: 10px;
 }
 .flats-table {
   border-collapse: collapse;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin-top: 2rem;
+  margin: auto;
+  width: 100%;
 }
 .flats-table th,
 .flats-table td {
@@ -259,6 +261,7 @@ nav {
   text-align: center;
   border-bottom: 3px solid var(--text-color);
   border-collapse: collapse;
+  font-weight: 500;
 }
 
 .flats-table th {
@@ -269,11 +272,12 @@ nav {
   border: none;
   background-color: var(--text-color);
   color: var(--base-color);
-  padding: 4px;
+  padding: 5px;
   display: block;
-  width: 60px;
+  width: 70px;
   border-radius: 5px;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 /*RESPONSIVE*/
@@ -315,5 +319,14 @@ nav {
   }
   .center-nav {
     margin: 0;
+  }
+  .flats-container {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+  .flats-table {
+    width: 100%;
+    min-width: 600px;
   }
 }

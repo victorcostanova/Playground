@@ -25,14 +25,27 @@
     </header>
     <main class="main-home">
       <h2>Favorite Flats</h2>
-
-      <p>Compare & Decide – Quickly review and compare your top choices.</p>
-      <p>Stay Organized – Keep only the flats that truly excite you.</p>
-      <p>
-        One Click Away – Changed your mind? Simply hit "Remove" to update your
-        list instantly.
-      </p>
-      <table></table>
+      <div class="flats-container">
+        <table class="flats-table" id="flats-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>City</th>
+              <th>Street</th>
+              <th>Area</th>
+              <th>Air Conditioner</th>
+              <th>Year</th>
+              <th>Price</th>
+              <th>Listing Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="flats-table-body">
+            <!-- Flats will be dynamically added here -->
+          </tbody>
+        </table>
+      </div>
+      <script src="fav.js"></script>
     </main>
   </body>
 </html>

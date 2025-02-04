@@ -57,13 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
       <td>$${flat.price}</td>
       <td>${flat.date}</td>
       <td>
-        <button class="btn-table" onclick="deleteFlat(${
-          flat.id
-        })">Delete</button>
-        <button class="btn-table" onclick="favFlat(${
-          flat.id
-        })">Favorite</button>
-      </td>
+  <button class="btn-table" onclick="deleteFlat(${flat.id})">Delete</button>
+  <button class="btn-table" onclick="favFlat(${flat.id})" data-id="${flat.id}" 
+    ${flat.isFavorite ? 'style="background-color: green;" disabled' : ""}>
+    ${flat.isFavorite ? "Favorited" : "Favorite"}
+  </button>
+</td>
     `;
 
     flatsTable.appendChild(flatRow);
@@ -78,4 +77,23 @@ function deleteFlat(flatId) {
 
   // Refresh the table to reflect the deletion
   window.location.reload();
+}
+
+function favFlat(flatId) {
+  const flats = JSON.parse(localStorage.getItem("flats")) || [];
+  const flatIndex = flats.findIndex((flat) => flat.id === flatId);
+
+  if (flatIndex !== -1 && !flats[flatIndex].isFavorite) {
+    // Mark as favorite
+    flats[flatIndex].isFavorite = true;
+    localStorage.setItem("flats", JSON.stringify(flats));
+
+    // Change button appearance
+    const button = document.querySelector(`button[data-id='${flatId}']`);
+    if (button) {
+      button.style.backgroundColor = "green";
+      button.innerText = "Favorited";
+      button.disabled = true; // Disable to prevent unfavoriting
+    }
+  }
 }
