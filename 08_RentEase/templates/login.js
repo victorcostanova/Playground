@@ -63,6 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (errors.length > 0) {
+      error_message.classList.remove("success-message");
+      error_message.classList.add("error-message");
       error_message.innerText = errors.join(". ");
     } else {
       error_message.innerText = "";
@@ -87,8 +89,22 @@ document.addEventListener("DOMContentLoaded", () => {
             user.email === email_input.value &&
             user.password === password_input.value
         );
+
+        const storedEmail = users.find(
+          (user) => user.email === email_input.value
+        );
+
+        if (!storedEmail) {
+          error_message.classList.remove("success-message");
+          error_message.classList.add("error-message");
+          error_message.innerText = "This email is not registered";
+          return;
+        }
+
         if (!storedUser) {
-          error_message.innerText = "Email or password do not match";
+          error_message.classList.remove("success-message");
+          error_message.classList.add("error-message");
+          error_message.innerText = "Email and password do not match";
           return;
         }
         localStorage.setItem("loggedUser", JSON.stringify(storedUser));

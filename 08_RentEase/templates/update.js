@@ -61,13 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (errors.length > 0) {
+      error_message.classList.remove("success-message");
       error_message.classList.add("error-message");
       error_message.innerText = errors.join(". ");
     } else {
       if (email_input.value !== loggedUser.email) {
         if (
           !confirm(
-            "Changing your email will create a new account, and your old account will be deleted. Do you want to proceed?"
+            `Changing your email (${email_input.value}) will create a new account, and your old account (${loggedUser.email}) will be deleted. Do you want to proceed?`
           )
         ) {
           return; // Stop if the user cancels
@@ -75,6 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let users = JSON.parse(localStorage.getItem("users")) || [];
         users = users.filter((user) => user.email !== loggedUser.email);
+
+        let flats = JSON.parse(localStorage.getItem("flats")) || [];
+        flats = flats.filter((flat) => flat.userEmail !== loggedUser.email);
+        localStorage.setItem("flats", JSON.stringify(flats));
 
         error_message.innerText = "";
 
@@ -88,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("users", JSON.stringify(users));
         localStorage.removeItem("loggedUser");
         localStorage.setItem("loggedUser", JSON.stringify(newUser));
+        error_message.classList.remove("error-message");
         error_message.classList.add("success-message");
         error_message.innerHTML =
           "Profile is updated! Logging in with new email...";
@@ -116,6 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
           localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
 
           // Show success message
+          error_message.classList.remove("error-message");
+          error_message.classList.add("success-message");
           error_message.innerHTML =
             "Profile is updated! Redirecting to home page...";
 
