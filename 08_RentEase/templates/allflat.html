@@ -4,38 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="login.js" defer></script>
+    <script type="text/javascript" src="allflats.js" defer></script>
     <title>RentEase-Home</title>
   </head>
   <body>
     <header class="header-home">
       <nav>
         <div class="left-nav">
-          <a href="allflat.html">All Flats</a>
+          <a href="home.html">Favorite Flats</a>
           <a href="addflat.html">Add Flat</a>
           <a href="update.html">Update Profile</a>
           <button id="logout-btn" onclick="">Logout</button>
         </div>
         <div class="center-nav"></div>
         <div class="right-nav">
-          <img class="logo" src="Logo.jpg" alt="Logo" />
-          <h2 id="welcome">Hello, user!</h2>
+          <img class="logo" src="/images/Logo.jpg" alt="Logo" />
+          <h2 id="welcome">Hellor, user!</h2>
         </div>
       </nav>
     </header>
     <main class="main-home">
-      <h2>Favorite Flats</h2>
+      <h2>All Flats</h2>
+
+      <p>Compare & Decide – Quickly review and compare your top choices.</p>
+
       <div class="flats-container">
         <table class="flats-table" id="flats-table">
           <thead>
             <tr>
               <th>ID</th>
-              <th>City</th>
+              <th onclick="sortTable('city')">City ⬍</th>
               <th>Street</th>
-              <th>Area</th>
+              <th onclick="sortTable('area')">Area (m²) ⬍</th>
               <th>Air Conditioner</th>
               <th>Year</th>
-              <th>Price</th>
+              <th onclick="sortTable('price')">Price ($) ⬍</th>
               <th>Listing Date</th>
               <th>Actions</th>
             </tr>
@@ -45,7 +48,6 @@
           </tbody>
         </table>
       </div>
-      <script src="fav.js"></script>
     </main>
   </body>
 </html>

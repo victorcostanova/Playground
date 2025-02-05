@@ -20,7 +20,7 @@ html {
 /* SignUp/Login */
 body {
   min-height: 100vh;
-  background-image: url(signup.jpg);
+  background-image: url(/images/signup.jpg);
   background-size: cover;
   background-position: right;
 }

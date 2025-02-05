@@ -4,29 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="update.js" defer></script>
-    <title>RentEase-Update Profile</title>
+    <script type="text/javascript" src="login.js" defer></script>
+    <title>RentEase-SignUp</title>
   </head>
   <body>
-    <header class="header-home">
-      <nav>
-        <div class="left-nav">
-          <a href="allflat.html">All Flats</a>
-          <a href="addflat.html">Add Flat</a>
-          <a href="home.html">Favorite Flats</a>
-          <button id="logout-btn" onclick="">Logout</button>
-        </div>
-        <div class="center-nav"></div>
-        <div class="right-nav">
-          <img class="logo" src="Logo.jpg" alt="Logo" />
-          <h2 id="welcome">Hellor, user!</h2>
-        </div>
-      </nav>
-    </header>
-    <div class="main-home">
-      <h2>Update Profile</h2>
+    <div class="wrapper">
+      <img src="/images/Logo.jpg" class="logo-login" alt="Logo" />
+
+      <h1>Signup</h1>
       <p id="error-message"></p>
-      <form class="updateform" id="form">
+      <form id="form">
         <div>
           <label for="firstname-input">
             <svg
@@ -124,8 +111,9 @@
             placeholder="Confirm password"
           />
         </div>
-        <button type="submit">Save Changes</button>
+        <button type="submit">Signup</button>
       </form>
+      <p>Already have an Account? <a href="login.html">Login</a></p>
     </div>
   </body>
 </html>
