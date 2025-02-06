@@ -1,3 +1,8 @@
+const eyeOpen = document.getElementById("open-icon");
+const eyeClosed = document.getElementById("closed-icon");
+eyeOpen.style.display = "block";
+eyeClosed.style.display = "none";
+
 function revealPass() {
   const password_input = document.getElementById("password-input");
   const confirm_password_input = document.getElementById(
@@ -18,8 +23,3 @@ function revealPass() {
     eyeClosed.style.display = "none";
   }
 }
-
-const eyeOpen = document.getElementById("open-icon");
-const eyeClosed = document.getElementById("closed-icon");
-eyeOpen.style.display = "block";
-eyeClosed.style.display = "none";

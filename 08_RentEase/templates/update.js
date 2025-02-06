@@ -64,73 +64,71 @@ document.addEventListener("DOMContentLoaded", () => {
       error_message.classList.remove("success-message");
       error_message.classList.add("error-message");
       error_message.innerText = errors.join(". ");
-    } else {
-      if (email_input.value !== loggedUser.email) {
-        if (
-          !confirm(
-            `Changing your email (${email_input.value}) will create a new account, and your old account (${loggedUser.email}) will be deleted. Do you want to proceed?`
-          )
-        ) {
-          return; // Stop if the user cancels
-        }
+    } else if (email_input.value !== loggedUser.email) {
+      if (
+        !confirm(
+          `Changing your email (${email_input.value}) will create a new account, and your old account (${loggedUser.email}) will be deleted. Do you want to proceed?`
+        )
+      ) {
+        return; // Stop if the user cancels
+      }
 
-        let users = JSON.parse(localStorage.getItem("users")) || [];
-        users = users.filter((user) => user.email !== loggedUser.email);
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      users = users.filter((user) => user.email !== loggedUser.email);
 
-        let flats = JSON.parse(localStorage.getItem("flats")) || [];
-        flats = flats.filter((flat) => flat.userEmail !== loggedUser.email);
-        localStorage.setItem("flats", JSON.stringify(flats));
+      let flats = JSON.parse(localStorage.getItem("flats")) || [];
+      flats = flats.filter((flat) => flat.userEmail !== loggedUser.email);
+      localStorage.setItem("flats", JSON.stringify(flats));
 
-        error_message.innerText = "";
+      error_message.innerText = "";
 
-        const newUser = {
-          firstname: firstname_input.value,
-          lastname: lastname_input.value,
-          email: email_input.value,
-          password: password_input.value,
-        };
-        users.push(newUser);
+      const newUser = {
+        firstname: firstname_input.value,
+        lastname: lastname_input.value,
+        email: email_input.value,
+        password: password_input.value,
+      };
+      users.push(newUser);
+      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.removeItem("loggedUser");
+      localStorage.setItem("loggedUser", JSON.stringify(newUser));
+      error_message.classList.remove("error-message");
+      error_message.classList.add("success-message");
+      error_message.innerHTML =
+        "Profile is updated! Logging in with new email...";
+
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 2000);
+    } else if ((errors.length = 0)) {
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      const userIndex = users.findIndex(
+        (user) => user.email === loggedUser.email
+      );
+
+      if (userIndex !== -1) {
+        users[userIndex].firstname = firstname_input.value;
+        users[userIndex].lastname = lastname_input.value;
+        users[userIndex].password = password_input.value;
+
+        // Update the users list in localStorage
         localStorage.setItem("users", JSON.stringify(users));
-        localStorage.removeItem("loggedUser");
-        localStorage.setItem("loggedUser", JSON.stringify(newUser));
+
+        // Update loggedUser in localStorage
+        loggedUser.firstname = firstname_input.value;
+        loggedUser.lastname = lastname_input.value;
+        loggedUser.password = password_input.value;
+        localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+
+        // Show success message
         error_message.classList.remove("error-message");
         error_message.classList.add("success-message");
         error_message.innerHTML =
-          "Profile is updated! Logging in with new email...";
+          "Profile is updated! Redirecting to home page...";
 
         setTimeout(() => {
           window.location.href = "home.html";
         }, 2000);
-      } else {
-        let users = JSON.parse(localStorage.getItem("users")) || [];
-        const userIndex = users.findIndex(
-          (user) => user.email === loggedUser.email
-        );
-
-        if (userIndex !== -1) {
-          users[userIndex].firstname = firstname_input.value;
-          users[userIndex].lastname = lastname_input.value;
-          users[userIndex].password = password_input.value;
-
-          // Update the users list in localStorage
-          localStorage.setItem("users", JSON.stringify(users));
-
-          // Update loggedUser in localStorage
-          loggedUser.firstname = firstname_input.value;
-          loggedUser.lastname = lastname_input.value;
-          loggedUser.password = password_input.value;
-          localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
-
-          // Show success message
-          error_message.classList.remove("error-message");
-          error_message.classList.add("success-message");
-          error_message.innerHTML =
-            "Profile is updated! Redirecting to home page...";
-
-          setTimeout(() => {
-            window.location.href = "home.html";
-          }, 2000);
-        }
       }
     }
   });

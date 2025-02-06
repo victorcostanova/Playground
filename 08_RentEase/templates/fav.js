@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!loggedUser) {
     window.location.href = "login.html";
+    return;
   }
 
   const flats = JSON.parse(localStorage.getItem("flats")) || [];
