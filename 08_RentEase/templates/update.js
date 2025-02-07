@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         window.location.href = "home.html";
       }, 2000);
-    } else if ((errors.length = 0)) {
+    } else {
       let users = JSON.parse(localStorage.getItem("users")) || [];
       const userIndex = users.findIndex(
         (user) => user.email === loggedUser.email
