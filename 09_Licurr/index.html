@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Licurr</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="curropt">
+        <label for="btc" id="btc"
+          >BTC <img src="/09_Licurr/btc.png" alt="btc"
+        /></label>
+        <input type="number" placeholder="valor" />
+        <button class="clear-btn" id="clearButton">&times;</button>
+      </div>
+      <div class="curropt">
+        <label for="sat" id="sat"
+          >SAT <img src="/09_Licurr/btc.png" alt="btc" />
+        </label>
+        <input type="number" placeholder="valor" />
+        <button class="clear-btn" id="clearButton">&times;</button>
+      </div>
+      <div class="curropt">
+        <label for="usd" id="usd">USD 🇺🇸 </label>
+        <input type="number" placeholder="valor" />
+        <button class="clear-btn" id="clearButton">&times;</button>
+      </div>
+      <div class="curropt">
+        <label for="brl" id="brl">BRL 🇧🇷</label>
+        <input type="number" placeholder="valor" />
+        <button class="clear-btn" id="clearButton">&times;</button>
+      </div>
+      <div class="curropt">
+        <label for="cad" id="cad">CAD 🇨🇦</label>
+        <input type="number" placeholder="valor" />
+        <button class="clear-btn" id="clearButton">&times;</button>
+      </div>
+
+      <div class="currency-selector">
+        <input
+          type="text"
+          id="currencyInput"
+          placeholder="Selecione a moeda"
+          readonly
+        />
+        <span class="dropdown-icon">▼</span>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <!-- As moedas serão inseridas via JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <script src="/09_Licurr/script/script.js"></script>
+    <!-- Inclui o arquivo JS -->
+  </body>
+</html>
