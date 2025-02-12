@@ -60,7 +60,8 @@ img {
   object-fit: contain;
 }
 
-.curropt input {
+.curropt input,
+.currency-selector.show input {
   margin-left: 10px;
   outline: none;
   width: 100%;
@@ -117,24 +118,6 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.currency-selector {
-  width: 100%;
-  max-width: var(--input-width);
-  margin-top: 1rem;
-  position: relative;
-}
-
-.currency-selector input {
-  width: 100%;
-  height: 2.5rem;
-  padding: 0.5rem;
-  border: 2px solid var(--input-color);
-  border-radius: 5px;
-  background: transparent;
-  color: var(--input-color);
-  cursor: pointer;
-}
-
 .dropdown-icon {
   position: absolute;
   right: 10px;
@@ -169,11 +152,9 @@ input[type="number"]::-webkit-outer-spin-button {
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
-  transition: all 0.3s ease;
 }
 
 .addBtn:hover {
-  transform: scale(1.1);
   box-shadow: 0 0 10px rgba(27, 105, 53, 0.5);
 }
 
@@ -181,11 +162,22 @@ input[type="number"]::-webkit-outer-spin-button {
   display: none;
   opacity: 0;
   transition: opacity 0.3s ease;
+  width: 100%;
+  max-width: var(--input-width);
+  margin-top: 1rem;
+  position: relative;
 }
 
 .currency-selector.show {
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  position: relative;
+
   display: block;
   opacity: 1;
+  width: 100%;
 }
 
 .dropdown-item {

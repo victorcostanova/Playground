@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clone the template
     const template = document.querySelector(".currency-selector");
     const selector = template.cloneNode(true);
-    selector.style.display = "block";
+    selector.classList.add("show");
 
     const dropdownMenu = selector.querySelector(".dropdown-menu");
 
