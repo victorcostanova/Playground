@@ -12,30 +12,39 @@
         <label for="btc" id="btc"
           >BTC <img src="/09_Licurr/btc.png" alt="btc"
         /></label>
-        <input type="number" placeholder="valor" />
+        <input type="number" id="btc-input" placeholder="valor" />
         <button class="clear-btn">&times;</button>
       </div>
       <div class="curropt">
         <label for="sat" id="sat"
           >SAT <img src="/09_Licurr/btc.png" alt="btc"
         /></label>
-        <input type="number" placeholder="valor" />
+        <input type="number" id="sat-input" placeholder="valor" />
         <button class="clear-btn">&times;</button>
       </div>
       <div class="curropt">
         <label for="usd" id="usd">USD 🇺🇸</label>
-        <input type="number" placeholder="valor" />
+        <input type="number" id="usd-input" placeholder="valor" />
         <button class="clear-btn">&times;</button>
       </div>
       <div class="curropt">
         <label for="brl" id="brl">BRL 🇧🇷</label>
-        <input type="number" placeholder="valor" />
+        <input type="number" id="brl-input" placeholder="valor" />
         <button class="clear-btn">&times;</button>
       </div>
       <div class="curropt">
         <label for="cad" id="cad">CAD 🇨🇦</label>
-        <input type="number" placeholder="valor" />
+        <input type="number" id="cad-input" placeholder="valor" />
         <button class="clear-btn">&times;</button>
+      </div>
+
+      <!-- Template for currency selector (initially hidden) -->
+      <div class="currency-selector" style="display: none">
+        <input type="text" placeholder="Select currency" readonly />
+        <span class="dropdown-icon">▼</span>
+        <div class="dropdown-menu">
+          <!-- Currency options will be added by JavaScript -->
+        </div>
       </div>
 
       <button class="addBtn">+</button>

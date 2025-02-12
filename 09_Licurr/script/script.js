@@ -1,10 +1,10 @@
-// Available currencies data
 const currencies = [
-  { code: "USD", symbol: "🇺🇸" },
   { code: "EUR", symbol: "🇪🇺" },
   { code: "GBP", symbol: "🇬🇧" },
   { code: "JPY", symbol: "🇯🇵" },
   { code: "AUD", symbol: "🇦🇺" },
+  { code: "CHF", symbol: "🇨🇭" },
+  { code: "CNY", symbol: "🇨🇳" },
   // Add more currencies as needed
 ];
 
@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let selectorCount = 0;
   const MAX_CURRENCIES = 7;
 
-  // Handle existing inputs and clear buttons
   function initializeInputHandlers() {
     const inputs = document.querySelectorAll(".curropt input");
     const clearBtns = document.querySelectorAll(".clear-btn");
@@ -34,22 +33,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Create currency selector
   function createCurrencySelector() {
-    const selector = document.createElement("div");
-    selector.className = "currency-selector";
+    // Clone the template
+    const template = document.querySelector(".currency-selector");
+    const selector = template.cloneNode(true);
+    selector.style.display = "block";
 
-    const input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = "Select currency";
-    input.readOnly = true;
-
-    const dropdownIcon = document.createElement("span");
-    dropdownIcon.className = "dropdown-icon";
-    dropdownIcon.textContent = "▼";
-
-    const dropdownMenu = document.createElement("div");
-    dropdownMenu.className = "dropdown-menu";
+    const dropdownMenu = selector.querySelector(".dropdown-menu");
 
     // Add currencies to dropdown
     currencies.forEach((currency) => {
@@ -64,12 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdownMenu.appendChild(option);
     });
 
-    selector.appendChild(input);
-    selector.appendChild(dropdownIcon);
-    selector.appendChild(dropdownMenu);
-
     // Toggle dropdown on click
-    input.addEventListener("click", () => {
+    const selectorInput = selector.querySelector("input");
+    selectorInput.addEventListener("click", () => {
       dropdownMenu.style.display =
         dropdownMenu.style.display === "block" ? "none" : "block";
     });
@@ -77,23 +64,20 @@ document.addEventListener("DOMContentLoaded", function () {
     return selector;
   }
 
-  // Create new currency input
   function createCurrencyInput(code, symbol) {
     const curropt = document.createElement("div");
     curropt.className = "curropt";
 
     curropt.innerHTML = `
-        <label for="${code.toLowerCase()}" id="${code.toLowerCase()}">${code} ${symbol}</label>
-        <input type="number" placeholder="value" />
-        <button class="clear-btn" id="clearButton">&times;</button>
-      `;
+      <label for="${code.toLowerCase()}">${code} ${symbol}</label>
+      <input type="number" id="${code.toLowerCase()}-input" placeholder="valor" />
+      <button class="clear-btn">&times;</button>
+    `;
 
-    // Insert before the add button
     wrapper.insertBefore(curropt, addBtn);
     initializeInputHandlers();
   }
 
-  // Add button click handler
   addBtn.addEventListener("click", () => {
     const currentCurrencies = document.querySelectorAll(".curropt").length;
 
