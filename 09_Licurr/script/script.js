@@ -1,12 +1,4 @@
-const currencies = [
-  { code: "EUR", symbol: "🇪🇺" },
-  { code: "GBP", symbol: "🇬🇧" },
-  { code: "JPY", symbol: "🇯🇵" },
-  { code: "AUD", symbol: "🇦🇺" },
-  { code: "CHF", symbol: "🇨🇭" },
-  { code: "CNY", symbol: "🇨🇳" },
-  // Add more currencies as needed
-];
+import currencies from "./currencies.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const wrapper = document.querySelector(".wrapper");
@@ -45,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     currencies.forEach((currency) => {
       const option = document.createElement("div");
       option.className = "dropdown-item";
-      option.textContent = `${currency.code} ${currency.symbol}`;
+      option.textContent = `${currency.code} ${currency.symbol} ${currency.name}`;
       option.addEventListener("click", () => {
         createCurrencyInput(currency.code, currency.symbol);
         selector.remove();

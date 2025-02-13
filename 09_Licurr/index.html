@@ -22,26 +22,10 @@
         <input type="number" id="sat-input" placeholder="valor" />
         <button class="clear-btn">&times;</button>
       </div>
-      <div class="curropt">
-        <label for="usd" id="usd">USD 🇺🇸</label>
-        <input type="number" id="usd-input" placeholder="valor" />
-        <button class="clear-btn">&times;</button>
-      </div>
-      <div class="curropt">
-        <label for="brl" id="brl">BRL 🇧🇷</label>
-        <input type="number" id="brl-input" placeholder="valor" />
-        <button class="clear-btn">&times;</button>
-      </div>
-      <div class="curropt">
-        <label for="cad" id="cad">CAD 🇨🇦</label>
-        <input type="number" id="cad-input" placeholder="valor" />
-        <button class="clear-btn">&times;</button>
-      </div>
-
-      <!-- Template for currency selector (initially hidden) -->
+      <!-- Template for FIAT selector -->
       <div class="currency-selector">
-        <input type="text" placeholder="Select currency" readonly />
-        <span class="dropdown-icon">▼</span>
+        <input type="text" placeholder="Selecione FIAT" readonly />
+        <div class="dropdown-icon">▼</div>
         <div class="dropdown-menu">
           <!-- Currency options will be added by JavaScript -->
         </div>
@@ -50,6 +34,6 @@
       <button class="addBtn">+</button>
     </div>
 
-    <script src="/09_Licurr/script/script.js" defer></script>
+    <script type="module" src="/09_Licurr/script/script.js" defer></script>
   </body>
 </html>
