@@ -1,6 +1,8 @@
 import ButtonLogin from "@/components/buttonlogin";
 
 export default function Home() {
+  const name = "Victor";
+  const isLoggedIn = true;
   return (
     <main>
       <h1>Collect customer feedback yo build better products</h1>
@@ -9,7 +11,7 @@ export default function Home() {
         products your customers will love.
       </div>
 
-      <ButtonLogin />
+      <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
     </main>
   );
 }
