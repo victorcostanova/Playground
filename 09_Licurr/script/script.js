@@ -25,6 +25,22 @@ document.addEventListener("DOMContentLoaded", function () {
         inputs[index].focus();
       });
     });
+
+    delBtns.forEach((button) => {
+      button.addEventListener("click", () => {
+        //Find the closest .curropt father
+        const curropt = button.closest(".curropt");
+        if (curropt) {
+          const currencyCode = curropt
+            .querySelector("label")
+            //split the text and get the 0 element (code ex USD)
+            .textContent.split(" ")[0];
+
+          selectedCurrencies.delete(currencyCode);
+          curropt.remove();
+        }
+      });
+    });
   }
 
   function createCurrencySelector() {
