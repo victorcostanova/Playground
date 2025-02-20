@@ -98,6 +98,27 @@ img {
   top: 50%;
 }
 
+.del-btn {
+  outline: none;
+  background: rgb(202, 25, 16);
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  right: calc(50% - 235px);
+  /*display: none;*/
+  align-items: center;
+  justify-content: center;
+  color: var(--base-color);
+  border: 2px solid rgb(202, 25, 16);
+  transform: translateY(-50%);
+  top: 50%;
+  line-height: 16px;
+}
+
 input:focus {
   border-color: var(--accent-color);
   box-shadow: 0 0 5px var(--accent-color);
@@ -214,6 +235,9 @@ input[type="number"]::-webkit-outer-spin-button {
   .clear-btn {
     right: calc(50% - 180px);
   }
+  .del-btn {
+    right: calc(50% - 213px);
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -223,6 +247,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
   .clear-btn {
     right: calc(50% - 153px);
+  }
+  .del-btn {
+    right: calc(50% - 185px);
   }
 }
 
@@ -249,6 +276,9 @@ input[type="number"]::-webkit-outer-spin-button {
   .clear-btn {
     right: calc(50% - 127px);
   }
+  .del-btn {
+    right: calc(50% - 160px);
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -274,5 +304,8 @@ input[type="number"]::-webkit-outer-spin-button {
 
   .clear-btn {
     right: calc(50% - 95px);
+  }
+  .del-btn {
+    right: calc(50% - 126px);
   }
 }

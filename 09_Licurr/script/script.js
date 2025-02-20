@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <label for="${code.toLowerCase()}">${code} ${symbol}</label>
       <input type="number" id="${code.toLowerCase()}-input" placeholder="valor" />
       <button class="clear-btn">&times;</button>
+      <button class="del-btn">-</button>
     `;
 
     wrapper.insertBefore(curropt, addBtn);
