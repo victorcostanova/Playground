@@ -5,10 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const addBtn = document.querySelector(".addBtn");
   let selectorCount = 0;
   const MAX_CURRENCIES = 7;
+  const selectedCurrencies = new Set();
 
   function initializeInputHandlers() {
     const inputs = document.querySelectorAll(".curropt input");
     const clearBtns = document.querySelectorAll(".clear-btn");
+    const delBtns = document.querySelectorAll(".del-btn");
 
     inputs.forEach((input, index) => {
       const clearBtn = clearBtns[index];
@@ -32,17 +34,24 @@ document.addEventListener("DOMContentLoaded", function () {
     selector.classList.add("show");
 
     const dropdownMenu = selector.querySelector(".dropdown-menu");
+    dropdownMenu.innerHTML = "";
 
     // Add currencies to dropdown
     currencies.forEach((currency) => {
       const option = document.createElement("div");
       option.className = "dropdown-item";
       option.textContent = `${currency.code} ${currency.symbol} ${currency.name}`;
-      option.addEventListener("click", () => {
-        createCurrencyInput(currency.code, currency.symbol);
-        selector.remove();
-        selectorCount--;
-      });
+      if (selectedCurrencies.has(currency.code)) {
+        //Block clicks if already on the list
+        option.style.opacity = "0.5";
+        option.style.pointerEvents = "none";
+      } else {
+        option.addEventListener("click", () => {
+          createCurrencyInput(currency.code, currency.symbol);
+          selector.remove();
+          selectorCount--;
+        });
+      }
       dropdownMenu.appendChild(option);
     });
 
@@ -57,6 +66,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function createCurrencyInput(code, symbol) {
+    if (selectedCurrencies.has(code)) return;
+
+    selectedCurrencies.add(code);
+
     const curropt = document.createElement("div");
     curropt.className = "curropt";
 
