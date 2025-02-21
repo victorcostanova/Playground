@@ -31,12 +31,12 @@ This project uses:
 
 If you would like to contribute to the project, follow these steps:
 
-### 1. Fork the repository
+- 1. Fork the repository
 
-### 2. Create a new branch for your feature or fix
+- 2. Create a new branch for your feature or fix
 
-### 3. Make your changes and commit
+- 3. Make your changes and commit
 
-### 4. Push your changes
+- 4. Push your changes
 
-### 5. Submit a pull request
+- 5. Submit a pull request
