@@ -1,4 +1,9 @@
 import currencies from "./currencies.js";
+import { initializeConversionHandlers } from "./conversion.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initializeConversionHandlers();
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   const wrapper = document.querySelector(".wrapper");
@@ -91,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     curropt.innerHTML = `
       <label for="${code.toLowerCase()}">${code} ${symbol}</label>
-      <input type="number" id="${code.toLowerCase()}-input" placeholder="valor" />
+      <input type="number" id="${code.toLowerCase()}-input" placeholder="value" />
       <button class="clear-btn">&times;</button>
       <button class="del-btn">-</button>
     `;
