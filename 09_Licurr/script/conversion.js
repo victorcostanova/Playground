@@ -1,6 +1,5 @@
 // Stores exchange rates of fiat currencies (always relative to USD)
 let exchangeRates = {};
-// Stores the BTC price in USD
 let btcPriceInUSD = 0;
 
 // Fetches exchange rates relative to USD
@@ -12,7 +11,6 @@ async function fetchExchangeRates() {
     const data = await response.json();
     exchangeRates = { ...data.rates };
     exchangeRates["USD"] = 1;
-    console.log("Exchange rates updated:", exchangeRates);
   } catch (error) {
     console.error("Error fetching exchange rates:", error);
   }
@@ -26,7 +24,6 @@ async function fetchBTCPrice() {
     );
     const data = await response.json();
     btcPriceInUSD = data.bitcoin.usd;
-    console.log("BTC price in USD updated:", btcPriceInUSD);
   } catch (error) {
     console.error("Error fetching BTC price in USD:", error);
   }
@@ -35,7 +32,6 @@ async function fetchBTCPrice() {
 // Converts value from any currency to USD
 function convertToUSD(value, fromCurrency) {
   if (!value || isNaN(value)) return 0;
-
   switch (fromCurrency) {
     case "USD":
       return value;
@@ -51,7 +47,6 @@ function convertToUSD(value, fromCurrency) {
 // Converts value from USD to any currency
 function convertFromUSD(valueInUSD, toCurrency) {
   if (!valueInUSD || isNaN(valueInUSD)) return 0;
-
   switch (toCurrency) {
     case "USD":
       return valueInUSD;
@@ -64,102 +59,90 @@ function convertFromUSD(valueInUSD, toCurrency) {
   }
 }
 
-// Updates the values in all currencies based on the user's input
-function updateCurrencyValues(baseInput, baseCurrency) {
-  const baseValue = parseFloat(baseInput.value);
-
-  // Update visibility of the clear button for all inputs
-  document.querySelectorAll(".curropt input").forEach((input) => {
-    const clearBtn = input.nextElementSibling;
-    if (clearBtn && clearBtn.classList.contains("clear-btn")) {
-      clearBtn.style.display = input.value ? "block" : "none";
-    }
+// Formats currency values
+function formatCurrency(value, currencyCode) {
+  if (isNaN(value)) return "";
+  let precision = currencyCode === "BTC" ? 8 : currencyCode === "SAT" ? 0 : 2;
+  return value.toLocaleString(undefined, {
+    minimumFractionDigits: precision,
+    maximumFractionDigits: precision,
   });
+}
+
+// Updates input values
+function updateCurrencyValues(baseInput, baseCurrency) {
+  let rawValue = baseInput.value.replace(",", ".");
+  rawValue = rawValue.replace(/(.*\..*)\./g, "$1");
+  const baseValue = parseFloat(rawValue);
 
   if (isNaN(baseValue)) {
-    // If the value is not a valid number, clear all other inputs
     document.querySelectorAll(".curropt input").forEach((input) => {
-      if (input !== baseInput) {
-        input.value = "";
-      }
+      if (input !== baseInput) input.value = "";
     });
     return;
   }
 
-  // Convert the base value to USD
   const valueInUSD = convertToUSD(baseValue, baseCurrency);
-  console.log(
-    `Value in USD: ${valueInUSD} (converted from ${baseValue} ${baseCurrency})`
-  );
 
   document.querySelectorAll(".curropt input").forEach((input) => {
     if (input === baseInput) return;
-
     const currencyCode = input.id.replace("-input", "").toUpperCase();
-    const convertedValue = convertFromUSD(valueInUSD, currencyCode);
+    input.value = formatCurrency(
+      convertFromUSD(valueInUSD, currencyCode),
+      currencyCode
+    );
 
-    // Set the appropriate precision for each type of currency
-    let precision;
-    switch (currencyCode) {
-      case "SAT":
-        precision = 0;
-        break;
-      case "BTC":
-        precision = 8;
-        break;
-      default:
-        precision = 2;
-    }
-
-    input.value = convertedValue.toFixed(precision);
-
-    // Update visibility of the clear button
+    // Exibir botão clear sempre que o input tiver valor
     const clearBtn = input.nextElementSibling;
     if (clearBtn && clearBtn.classList.contains("clear-btn")) {
-      clearBtn.style.display = input.value ? "block" : "none";
+      clearBtn.style.display = input.value ? "inline-block" : "none";
     }
   });
+
+  // Exibir botão clear para o input base também
+  const baseClearBtn = baseInput.nextElementSibling;
+  if (baseClearBtn && baseClearBtn.classList.contains("clear-btn")) {
+    baseClearBtn.style.display = baseInput.value ? "inline-block" : "none";
+  }
 }
 
-// Function to clear a specific input
+// Clears an input field
 function clearInput(input) {
   input.value = "";
+  updateCurrencyValues(input, input.id.replace("-input", "").toUpperCase());
+
   const clearBtn = input.nextElementSibling;
   if (clearBtn && clearBtn.classList.contains("clear-btn")) {
     clearBtn.style.display = "none";
   }
-  // Clear all other inputs as well
-  document.querySelectorAll(".curropt input").forEach((otherInput) => {
-    if (otherInput !== input) {
-      otherInput.value = "";
-      const otherClearBtn = otherInput.nextElementSibling;
-      if (otherClearBtn && otherClearBtn.classList.contains("clear-btn")) {
-        otherClearBtn.style.display = "none";
-      }
-    }
-  });
 }
 
-// Initializes event handlers for all inputs
+// Initialize input listeners
 async function initializeConversionHandlers() {
-  // Fetch initial rates
   await Promise.all([fetchExchangeRates(), fetchBTCPrice()]);
 
   function attachInputListeners() {
     document.querySelectorAll(".curropt input").forEach((input) => {
       if (!input.dataset.listenerAttached) {
+        input.setAttribute("autocomplete", "off");
+        input.setAttribute("inputmode", "decimal");
+        input.setAttribute("step", "any");
+
         input.addEventListener("input", (event) => {
+          let val = event.target.value.replace(/[^0-9.,]/g, "");
+          val = val.replace(/(.*[.,].*)[.,]/g, "$1");
+          event.target.value = val;
+
           const baseCurrency = event.target.id
             .replace("-input", "")
             .toUpperCase();
           updateCurrencyValues(event.target, baseCurrency);
         });
 
-        // Mark that the listener has already been added
         input.dataset.listenerAttached = "true";
       }
 
-      // Set up the clear button
+      // Configure clear button visibility
       const clearBtn = input.nextElementSibling;
       if (
         clearBtn &&
@@ -167,21 +150,18 @@ async function initializeConversionHandlers() {
         !clearBtn.dataset.listenerAttached
       ) {
         clearBtn.addEventListener("click", () => clearInput(input));
-        clearBtn.dataset.listenerAttached = "true"; // Prevent adding multiple events
+        clearBtn.dataset.listenerAttached = "true";
       }
     });
   }
 
-  // Observe DOM changes to dynamically add listeners
-  const observer = new MutationObserver(() => {
-    attachInputListeners();
-  });
-
+  // Observe DOM changes for new inputs
+  const observer = new MutationObserver(() => attachInputListeners());
   observer.observe(document.body, { childList: true, subtree: true });
 
-  attachInputListeners(); // Call the function initially for existing inputs
+  attachInputListeners();
 
-  // Update rates every 1 minute
+  // Update exchange rates every 60 seconds
   setInterval(async () => {
     await Promise.all([fetchExchangeRates(), fetchBTCPrice()]);
   }, 60000);

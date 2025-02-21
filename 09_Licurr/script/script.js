@@ -11,7 +11,37 @@ document.addEventListener("DOMContentLoaded", function () {
   let selectorCount = 0;
   const MAX_CURRENCIES = 7;
   const selectedCurrencies = new Set();
+  const STORAGE_KEY = "savedCurrencies";
+  const EXCLUDED_CURRENCIES = ["BTC", "SAT"];
 
+  function saveCurrenciesToStorage() {
+    const currencyElements = document.querySelectorAll(".curropt");
+    const savedCurrencies = Array.from(currencyElements)
+      .map((element) => {
+        const label = element.querySelector("label").textContent.split(" ");
+        return {
+          code: label[0],
+          symbol: label[1],
+        };
+      })
+      .filter((currency) => !EXCLUDED_CURRENCIES.includes(currency.code));
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(savedCurrencies));
+  }
+
+  // Load savedcurrencies from the localStorage
+  function loadCurrenciesFromStorage() {
+    const savedCurrencies = localStorage.getItem(STORAGE_KEY);
+    if (savedCurrencies) {
+      const currencies = JSON.parse(savedCurrencies);
+      currencies.forEach((currency) => {
+        if (!EXCLUDED_CURRENCIES.includes(currency.code)) {
+          createCurrencyInput(currency.code, currency.symbol);
+        }
+      });
+    }
+  }
+  //Clear and Delete button functionality
   function initializeInputHandlers() {
     const inputs = document.querySelectorAll(".curropt input");
     const clearBtns = document.querySelectorAll(".clear-btn");
@@ -33,23 +63,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     delBtns.forEach((button) => {
       button.addEventListener("click", () => {
-        //Find the closest .curropt father
         const curropt = button.closest(".curropt");
         if (curropt) {
           const currencyCode = curropt
             .querySelector("label")
-            //split the text and get the 0 element (code ex USD)
             .textContent.split(" ")[0];
 
           selectedCurrencies.delete(currencyCode);
           curropt.remove();
+          if (!EXCLUDED_CURRENCIES.includes(currencyCode)) {
+            saveCurrenciesToStorage();
+          }
         }
       });
     });
   }
 
+  //Creates the menu with all FIAT options to be added
   function createCurrencySelector() {
-    // Clone the template
     const template = document.querySelector(".currency-selector");
     const selector = template.cloneNode(true);
     selector.classList.add("show");
@@ -57,13 +88,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const dropdownMenu = selector.querySelector(".dropdown-menu");
     dropdownMenu.innerHTML = "";
 
-    // Add currencies to dropdown
     currencies.forEach((currency) => {
       const option = document.createElement("div");
       option.className = "dropdown-item";
       option.textContent = `${currency.code} ${currency.symbol} ${currency.name}`;
+      //If already exists on the list, the option will be unavaiable
       if (selectedCurrencies.has(currency.code)) {
-        //Block clicks if already on the list
         option.style.opacity = "0.5";
         option.style.pointerEvents = "none";
       } else {
@@ -76,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
       dropdownMenu.appendChild(option);
     });
 
-    // Toggle dropdown on click
     const selectorInput = selector.querySelector("input");
     selectorInput.addEventListener("click", () => {
       dropdownMenu.style.display =
@@ -86,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return selector;
   }
 
+  //Create and adding the new Currency selected to the  main list
   function createCurrencyInput(code, symbol) {
     if (selectedCurrencies.has(code)) return;
 
@@ -96,13 +126,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     curropt.innerHTML = `
       <label for="${code.toLowerCase()}">${code} ${symbol}</label>
-      <input type="number" id="${code.toLowerCase()}-input" placeholder="value" />
+      <input type="text" id="${code.toLowerCase()}-input" placeholder="value" />
       <button class="clear-btn">&times;</button>
       <button class="del-btn">-</button>
     `;
 
     wrapper.insertBefore(curropt, addBtn);
     initializeInputHandlers();
+
+    if (!EXCLUDED_CURRENCIES.includes(code)) {
+      saveCurrenciesToStorage();
+    }
   }
 
   addBtn.addEventListener("click", () => {
@@ -120,7 +154,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Close dropdowns when clicking outside
   document.addEventListener("click", (e) => {
     if (
       !e.target.closest(".currency-selector") &&
@@ -132,6 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Initialize existing inputs
+  loadCurrenciesFromStorage();
   initializeInputHandlers();
 });
