@@ -3,6 +3,10 @@ import ButtonLogin from "@/components/buttonlogin";
 export default function Home() {
   const name = "Victor";
   const isLoggedIn = true;
+
+  const greeting = `Hello ${isLoggedIn ? name : "there"} `;
+  console.log(greeting);
+
   return (
     <main>
       {/* HEADER */}
@@ -112,7 +116,11 @@ export default function Home() {
             </li>
           </ul>
 
-          <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
+          <ButtonLogin
+            isLoggedIn={isLoggedIn}
+            name={name}
+            extraStyle="w-full"
+          />
         </div>
       </section>
     </main>
