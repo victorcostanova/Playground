@@ -1,4 +1,5 @@
 import ButtonLogin from "@/components/buttonlogin";
+import FAQListItem from "@/components/FAQListItem";
 
 export default function Home() {
   const name = "Victor";
@@ -89,8 +90,18 @@ export default function Home() {
             Frequently Asked Questions
           </h2>
           <ul>
-            {[{ question: "Q", answer: "A" }].map((qa) => (
-              <li key={qa.question}>{qa.question}</li>
+            {[
+              { question: "What do i get exactly?", answer: "A" },
+              {
+                question: "Can I get a refund?",
+                answer: "A",
+              },
+              {
+                question: "I have another question",
+                answer: "A",
+              },
+            ].map((qa) => (
+              <FAQListItem key={qa.question} qa={qa} />
             ))}
           </ul>
         </div>
