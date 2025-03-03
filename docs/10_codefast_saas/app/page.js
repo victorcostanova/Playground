@@ -89,7 +89,7 @@ export default function Home() {
           <h2 className="text-3xl lg:text-4xl font-extrabold mb-12 text-center">
             Frequently Asked Questions
           </h2>
-          <ul>
+          <ul className="max-w-lg mx-auto">
             {[
               { question: "What do i get exactly?", answer: "A" },
               {
