@@ -1,5 +1,7 @@
 import ButtonLogin from "@/components/buttonlogin";
 import FAQListItem from "@/components/FAQListItem";
+import Image from "next/image";
+import productDemo from "@/app/productDemo.jpeg";
 
 export default function Home() {
   const name = "Victor";
@@ -25,15 +27,22 @@ export default function Home() {
         </div>
       </section>
       {/* HERO */}
-      <section className="text-center px-8 py-32 max-w-3xl mx-auto">
-        <h1 className="text-4xl lg:text-5xl font-extrabold">
-          Collect customer feedback you build better products
-        </h1>
-        <div className="opacity-90 mb-10">
-          Create a feedback board in minutes, prioritize features, and build
-          products your customers will love.
+      <section className="text-center lg:text-left px-8 py-32 max-w-5xl mx-auto flex flex-col lg:flex-row gap-14 items-center lg:items-start">
+        <Image
+          src={productDemo}
+          alt="Product demo"
+          className="w-96 rounded-xl"
+        />
+        <div>
+          <h1 className="text-4xl lg:text-5xl  font-extrabold mb-6">
+            Collect customer feedback you build better products
+          </h1>
+          <div className="opacity-90 mb-10">
+            Create a feedback board in minutes, prioritize features, and build
+            products your customers will love.
+          </div>
+          <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
         </div>
-        <ButtonLogin isLoggedIn={isLoggedIn} name={name} />
       </section>
       {/* PRICING */}
       <section className="bg-base-200" id="pricing">
