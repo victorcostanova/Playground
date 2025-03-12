@@ -18,6 +18,7 @@ const loop = setInterval(() => {
 
   if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 88) {
     document.getElementById("gameover").style.display = "block";
+    document.getElementById("reset").style.display = "block";
     clouds.style.animation = "none";
     clouds.style.left = `${cloudsPosition}px`;
 
@@ -36,3 +37,7 @@ const loop = setInterval(() => {
 }, 10);
 
 document.addEventListener("keydown", jump);
+
+function resetGame() {
+  location.reload();
+}

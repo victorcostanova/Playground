@@ -36,7 +36,19 @@
   z-index: 999;
   width: 300px;
   display: none;
-  animation: gameOver-animation 0.05s ease-out forwards;
+  animation: gameOver-animation 0.1s ease-out forwards;
+}
+
+.reset {
+  position: absolute;
+  width: 100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+  animation: reset-animation 0.1s ease-out forwards;
 }
 .clouds {
   position: absolute;
@@ -87,5 +99,14 @@
   }
   to {
     top: 50%;
+  }
+}
+
+@keyframes reset-animation {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 80%;
   }
 }
