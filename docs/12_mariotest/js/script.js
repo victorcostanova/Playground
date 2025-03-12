@@ -48,7 +48,7 @@ const loop = setInterval(() => {
     updateScore();
     hasPassed = true;
   }
-  if (pipePosition > 1000) {
+  if (pipePosition > 300) {
     hasPassed = false;
   }
 }, 10);
