@@ -29,6 +29,15 @@
   animation: jump 500ms ease-out;
 }
 
+.gameover {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  width: 300px;
+  display: none;
+  animation: gameOver-animation 0.05s ease-out forwards;
+}
 .clouds {
   position: absolute;
   width: 450px;
@@ -69,5 +78,14 @@
   }
   to {
     right: 100%;
+  }
+}
+
+@keyframes gameOver-animation {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 50%;
   }
 }
