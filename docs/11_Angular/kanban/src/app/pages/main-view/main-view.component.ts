@@ -7,8 +7,6 @@ import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
-  CdkDrag,
-  CdkDropList,
   DragDropModule,
 } from '@angular/cdk/drag-drop';
 
@@ -23,8 +21,7 @@ export class MainViewComponent {
 
   board: Board = new Board('test Board', [
     new Column('Ideas', ['Some random idea', 'Vai tomando', 'BTC']),
-    new Column('Research', ['Vai tomando', 'RX', 'Siiiiu']),
-    new Column('Todo', [
+    new Column('In Progress', [
       'Get to work',
       'Pick up groceries',
       'Go home',

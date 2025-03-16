@@ -2,18 +2,17 @@
   <div class="navbar has-background-dark">
     <div class="navbar-brand">
       <div class="navbar-item">
-        <h1 class="app-name has-gradient-text">kanban</h1>
+        <h1 class="app-name">Kanban Victor</h1>
       </div>
     </div>
   </div>
 
   <div class="board">
     <div class="board-bar">
-      <p class="board-name">Board Name</p>
+      <h2 class="board-name has-gradient-text">Kanban Board</h2>
     </div>
     <div class="board-wrapper">
       <div class="board-columns" cdkDropListGroup>
-        <!-- Coluna Ideas -->
         <div class="board-column" *ngFor="let column of board.columns">
           <div class="column-title">{{ column.name }}</div>
           <div

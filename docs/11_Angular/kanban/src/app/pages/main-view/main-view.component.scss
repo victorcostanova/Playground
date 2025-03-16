@@ -11,7 +11,7 @@
 }
 
 .has-gradient-text {
-  background: -webkit-linear-gradient(#13f7f4, #2af598);
+  background: -webkit-linear-gradient(#f71381, #f52aeb);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -30,7 +30,7 @@
     padding: 8px 15px;
 
     .board-name {
-      font-size: 20px;
+      font-size: 28px;
       font-weight: bold;
       color: white;
     }
@@ -40,6 +40,7 @@
     display: flex;
     flex-grow: 1;
     overflow-x: auto;
+    margin-bottom: 10px;
 
     .board-columns {
       display: flex;
@@ -52,6 +53,8 @@
         flex-basis: 0;
 
         min-width: 300px;
+        min-height: 800px;
+
         margin: 50px;
         padding: 25px;
 
@@ -69,7 +72,7 @@
           font-family: "Lato", sans-serif;
           text-transform: uppercase;
           margin-bottom: 20px;
-          color: rgb(83, 83, 83);
+          color: rgb(255, 255, 255);
         }
       }
     }
@@ -85,7 +88,8 @@
   background: white;
   border-bottom: solid 1px #ddd;
   border-radius: 4px;
-  cursor: default;
+  color: black;
+  cursor: pointer;
 
   margin-bottom: 15px;
 
