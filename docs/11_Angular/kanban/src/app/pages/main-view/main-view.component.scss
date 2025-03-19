@@ -143,6 +143,14 @@
   visibility: visible;
 }
 
+.task-name {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
 .task-form {
   margin-top: 30px;
   display: flex;

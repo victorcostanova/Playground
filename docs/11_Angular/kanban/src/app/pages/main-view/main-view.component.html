@@ -29,8 +29,13 @@
 
     <div class="task-form">
       <mat-form-field>
-        <mat-label>New Task</mat-label>
-        <input matInput [(ngModel)]="newTask" />
+        <mat-label>Task Name</mat-label>
+        <input matInput [(ngModel)]="newTaskName" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Task Description</mat-label>
+        <input matInput [(ngModel)]="newTaskDescription" />
       </mat-form-field>
 
       <button mat-mini-fab color="primary" (click)="addTask()">
@@ -53,7 +58,11 @@
               *ngFor="let task of column.tasks; let i = index"
               cdkDrag
             >
-              {{ task }}
+              <div class="task-content">
+                <p class="task-name">{{ task.name }}</p>
+                <p class="task-description">{{ task.description }}</p>
+              </div>
+
               <button
                 mat-icon-button
                 color="warn"

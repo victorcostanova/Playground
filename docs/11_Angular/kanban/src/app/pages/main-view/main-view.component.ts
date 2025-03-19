@@ -49,7 +49,7 @@ export class MainViewComponent {
     new Column('Done', []),
   ]);
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<{ name: string; description: string }[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -66,18 +66,22 @@ export class MainViewComponent {
     }
   }
 
-  newTask: string = '';
+  newTaskName: string = '';
+  newTaskDescription: string = '';
 
   addTask() {
-    if (this.newTask.trim()) {
-      // Procura a coluna "Ideas"
+    if (this.newTaskName.trim()) {
       const ideasColumn = this.board.columns.find(
         (col) => col.name === 'Ideas'
       );
-
       if (ideasColumn) {
-        ideasColumn.tasks.push(this.newTask.trim());
-        this.newTask = ''; // Limpa o input
+        ideasColumn.tasks.push({
+          name: this.newTaskName.trim(),
+          description: this.newTaskDescription.trim(),
+        });
+
+        this.newTaskName = '';
+        this.newTaskDescription = '';
       }
     }
   }
