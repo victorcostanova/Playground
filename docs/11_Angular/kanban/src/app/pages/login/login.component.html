@@ -1,24 +1,28 @@
-<div class="login-container">
-  <h2>Login</h2>
-  <form (ngSubmit)="login()">
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput type="email" [(ngModel)]="email" name="email" required />
-    </mat-form-field>
+<div class="root">
+  <div class="navbar has-background-dark">
+    <div class="navbar-brand">
+      <a class="navbar-item" (click)="drawer.toggle()">
+        <mat-icon class="menu-button">menu</mat-icon>
+      </a>
+      <mat-drawer #drawer mode="side" class="drawer">
+        <div class="drawer-links">
+          <a mat-list-item (click)="navigateTo('/home')">Home</a>
+          <a mat-list-item (click)="navigateTo('/tasks')">Tasks</a>
+          <a mat-list-item (click)="navigateTo('/about')">About</a>
+        </div>
+      </mat-drawer>
+    </div>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Senha</mat-label>
-      <input
-        matInput
-        type="password"
-        [(ngModel)]="password"
-        name="password"
-        required
-      />
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit">Entrar</button>
-  </form>
-
-  <p>Não tem uma conta? <a (click)="navigateTo('/register')">Registre-se</a></p>
+    <div class="navbar-end">
+      <div class="drawer-links">
+        <a mat-list-item (click)="navigateTo('/login')">Login</a>
+        <a mat-list-item (click)="navigateTo('/register')">Register</a>
+      </div>
+    </div>
+  </div>
+  <div class="board">
+    <div class="board-bar">
+      <p class="board-name has-gradient-text">Login</p>
+    </div>
+  </div>
 </div>
