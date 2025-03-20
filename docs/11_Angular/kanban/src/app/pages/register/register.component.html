@@ -1,0 +1,17 @@
+<div class="auth-container">
+  <h2>Registrar</h2>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="email" type="email" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Senha</mat-label>
+    <input matInput [(ngModel)]="password" type="password" />
+  </mat-form-field>
+
+  <button mat-raised-button color="accent" (click)="register()">
+    Registrar
+  </button>
+  <p>Já tem conta? <a routerLink="/login">Faça login</a></p>
+</div>
