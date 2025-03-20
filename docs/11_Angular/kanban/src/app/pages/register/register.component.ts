@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,11 @@ export class RegisterComponent {
   email = '';
   password = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) {}
+
+  navigateTo(path: string) {
+    this.router.navigate([path]);
+  }
 
   async register() {
     try {
