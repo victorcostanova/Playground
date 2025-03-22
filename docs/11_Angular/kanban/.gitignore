@@ -1,6 +1,5 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-
 /src/environments/environment.ts
 
 # Compiled output
@@ -43,3 +42,5 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+../kanban/node_modules_backup/
+../kanban/package-lock-backup.json
