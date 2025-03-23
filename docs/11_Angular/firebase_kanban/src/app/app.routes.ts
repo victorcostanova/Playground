@@ -9,6 +9,7 @@ import { AboutComponent } from './pages/about/about.component';
 export const routes: Routes = [
   { path: '', pathMatch: 'full', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'tasks', component: TasksComponent },
