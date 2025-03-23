@@ -28,7 +28,6 @@ export class AppComponent {
 
   constructor(private router: Router) {}
 
-  // Método para navegação
   navigateTo(route: string) {
     this.router.navigate([route]);
   }
