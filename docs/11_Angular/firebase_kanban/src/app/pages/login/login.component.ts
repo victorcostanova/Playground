@@ -8,8 +8,7 @@ import {
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatButton, MatButtonModule } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 import { AuthenticationService } from '../../services/authentication.service';
 import { HotToastService } from '@ngneat/hot-toast';
 
@@ -23,13 +22,14 @@ import { HotToastService } from '@ngneat/hot-toast';
     ReactiveFormsModule,
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
   });
+
   constructor(
     private router: Router,
     private authService: AuthenticationService,
@@ -43,6 +43,7 @@ export class LoginComponent {
   get email() {
     return this.loginForm.get('email');
   }
+
   get password() {
     return this.loginForm.get('password');
   }
@@ -59,13 +60,13 @@ export class LoginComponent {
       .login(email, password)
       .pipe(
         this.toast.observe({
-          success: 'Logged in successfully',
-          loading: 'Logging in... ',
-          error: 'There was an error',
+          success: 'Logged in successfully!',
+          loading: 'Logging in...',
+          error: 'There was an error during login.',
         })
       )
       .subscribe(() => {
-        this.router.navigate(['/tasks']);
+        this.router.navigate(['/home']);
       });
   }
 }

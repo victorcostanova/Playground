@@ -1,11 +1,22 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
+import { User } from '@angular/fire/auth'; // Importe a interface User
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  user$: Observable<User | null>;
 
+  constructor(private authService: AuthenticationService) {
+    this.user$ = this.authService.currentUser$;
+  }
+
+  ngOnInit() {}
 }

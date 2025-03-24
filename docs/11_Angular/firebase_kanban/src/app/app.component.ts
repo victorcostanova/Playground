@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { AuthenticationService } from './services/authentication.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,7 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    CommonModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -26,9 +29,17 @@ import { RouterModule } from '@angular/router';
 export class AppComponent {
   title = 'firebase_kanban';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    public authService: AuthenticationService
+  ) {}
 
   navigateTo(route: string) {
     this.router.navigate([route]);
+  }
+  logout() {
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['']);
+    });
   }
 }
