@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
-import { User } from '@angular/fire/auth'; // Importe a interface User
+import { User } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
