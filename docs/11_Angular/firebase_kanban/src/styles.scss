@@ -1,10 +1,13 @@
 @use "bulma";
 
-html,
-body {
-  height: 100%;
+html {
+  --bulma-scheme: light !important;
+  --bulma-body-background-color: white !important;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--bulma-body-background-color);
+  color: var(--bulma-body-color);
 }
