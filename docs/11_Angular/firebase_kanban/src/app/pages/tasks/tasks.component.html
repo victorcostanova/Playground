@@ -1,57 +1,71 @@
-<div class="task-form">
-  <form [formGroup]="taskForm" (ngSubmit)="addTask()">
-    <mat-form-field appearance="fill">
-      <mat-label>Task Title</mat-label>
-      <input matInput formControlName="taskTitle" />
-      @if (taskForm.get('taskTitle')?.invalid &&
-      taskForm.get('taskTitle')?.touched) { Task Title is required. }
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Task Description</mat-label>
-      <input matInput formControlName="taskDescription" />
-      @if (taskForm.get('taskDescription')?.invalid &&
-      taskForm.get('taskDescription')?.touched) { Task Title is required. }
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit">Add Task</button>
-  </form>
-</div>
-
-<div class="kanban-board" cdkDropListGroup>
-  @for (column of columns; track column.name) {
-
-  <!-- Ensure cdkDropList is bound correctly -->
-  <div
-    cdkDropList
-    [cdkDropListData]="column.tasks"
-    (cdkDropListDropped)="drop($event, column.name)"
-    class="column"
-  >
-    <h3 class="column-title">{{ column.name }}</h3>
-    @for (task of column.tasks; track task) {
-    <div
-      cdkDrag
-      [cdkDragData]="task"
-      class="task-card"
-      [attr.data-id]="task.id"
-    >
-      <div class="task-content">
-        <div class="task-text">
-          <h4>{{ task.title }}</h4>
-          <p>{{ task.description }}</p>
-          <small>{{ task.createdAt | date : "short" }}</small>
+<div class="root">
+  <div class="navbar has-background-dark">
+    <div class="navbar-brand">
+      <a class="navbar-item" (click)="drawer.toggle()">
+        <mat-icon class="menu-button">menu</mat-icon>
+      </a>
+      <mat-drawer #drawer mode="side" class="drawer">
+        <div class="drawer-links">
+          <a mat-list-item (click)="navigateTo('/home')">Home</a>
+          <a mat-list-item (click)="navigateTo('/tasks')">Tasks</a>
+          <a mat-list-item (click)="navigateTo('/about')">About</a>
         </div>
-        <button
-          mat-icon-button
-          class="delete-btn"
-          (click)="deleteTask(task, column.name)"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
+      </mat-drawer>
+    </div>
+  </div>
+
+  <div class="board">
+    <div class="board-bar">
+      <p class="board-name has-gradient-text">Task List</p>
+    </div>
+
+    <div class="task-form">
+      <mat-form-field>
+        <mat-label>Task Name</mat-label>
+        <input matInput [(ngModel)]="newTaskName" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Task Description</mat-label>
+        <input matInput [(ngModel)]="newTaskDescription" />
+      </mat-form-field>
+
+      <button mat-mini-fab color="primary" (click)="addTask()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <div class="board-wrapper">
+      <div class="board-columns" cdkDropListGroup>
+        <div class="board-column" *ngFor="let column of board.columns">
+          <div class="column-title">{{ column.name }}</div>
+          <div
+            class="tasks-container"
+            cdkDropList
+            [cdkDropListData]="column.tasks"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div
+              class="task"
+              *ngFor="let task of column.tasks; let i = index"
+              cdkDrag
+            >
+              <div class="task-content">
+                <p class="task-name">{{ task.name }}</p>
+                <p class="task-description">{{ task.description }}</p>
+              </div>
+
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="deleteTask(column, i)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    }
   </div>
-  }
 </div>
